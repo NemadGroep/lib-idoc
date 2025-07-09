@@ -1,8 +1,7 @@
 import re
 import logging
-from ftplib import FTP
-from lib_utilys import clean_special_characters, read_json
 from lib_invoice import Invoice
+from lib_utilys import clean_special_characters
 
 logger = logging.getLogger(__name__)
 
