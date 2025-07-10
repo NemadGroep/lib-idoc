@@ -1,20 +1,21 @@
 import re
 import logging
+from pathlib import Path
 from lib_invoice import Invoice
 from lib_utilys import clean_special_characters
 
 logger = logging.getLogger(__name__)
 
 class IDOC:
-    def __init__(self):
+    def __init__(self, startseg_path: Path, dynseg_path: Path, endseg_path: Path):
         self.static_segment_start = None
         self.static_segment_end = None
         self.dynamic_segment = None
         self.xml_filename = None
         self.xml = None
-        self._initialize_segments()
+        self._initialize_segments(startseg_path, dynseg_path, endseg_path)
 
-    def _initialize_segments(self, startseg_path: str, dynseg_path: str, endseg_path: str):
+    def _initialize_segments(self, startseg_path: Path, dynseg_path: Path, endseg_path: Path):
         """Initializes IDOC segments."""
         try:
             with open(startseg_path, 'r') as file:
